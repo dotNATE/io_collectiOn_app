@@ -7,7 +7,7 @@
 #
 # Host: 127.0.0.1 (MySQL 5.7.33)
 # Database: collection_app
-# Generation Time: 2021-03-29 10:30:28 +0000
+# Generation Time: 2021-03-29 10:43:53 +0000
 # ************************************************************
 
 
@@ -27,11 +27,11 @@ DROP TABLE IF EXISTS `books`;
 
 CREATE TABLE `books` (
   `id` int(11) unsigned NOT NULL AUTO_INCREMENT,
-  `book_title` varchar(60) DEFAULT NULL,
+  `book_title` varchar(150) DEFAULT NULL,
   `author` varchar(60) DEFAULT NULL,
   `genre` varchar(50) DEFAULT NULL,
   `page_count` int(11) DEFAULT NULL,
-  `year_released` int(4) DEFAULT NULL,
+  `year_released` year(4) DEFAULT NULL,
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
@@ -40,11 +40,11 @@ LOCK TABLES `books` WRITE;
 
 INSERT INTO `books` (`id`, `book_title`, `author`, `genre`, `page_count`, `year_released`)
 VALUES
-	(1,'Foundation','Isaac Asimov','Science-Fiction',255,1942),
-	(2,'A Game of Thrones','George R R Martin','Fantasy',694,1996),
-	(3,'Dune','Frank Herbert','Science-Fiction',444,1976),
-	(4,'Kafka on the Shore','Haruki Murakami','Fantasy',505,2002),
-	(5,'Meditations','Marcus Aurelius','Philosophy',162,180);
+	(1,'Foundation','Isaac Asimov','Science-Fiction',255,'1942'),
+	(2,'A Game of Thrones','George R R Martin','Fantasy',694,'1996'),
+	(3,'Dune','Frank Herbert','Science-Fiction',444,'1976'),
+	(4,'Kafka on the Shore','Haruki Murakami','Fantasy',505,'2002'),
+	(6,'Why I\'m No Longer Talking To White People About Race','Reni Eddo-Lodge','Non-Fiction',238,'2017');
 
 /*!40000 ALTER TABLE `books` ENABLE KEYS */;
 UNLOCK TABLES;
