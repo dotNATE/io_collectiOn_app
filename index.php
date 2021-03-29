@@ -1,7 +1,12 @@
+<?php require 'functions.php'; ?>
+
+<h2>BOOK COLLECTION</h2>
+
 <?php
 
-require 'functions.php';
+$query = getAllFromDB($db);
+$output = prepareOutput($query);
 
-echo '<pre>';
-print_r($query);
-echo '</pre>';
+foreach ($output as $key => $value) {
+    echo $value;
+}
