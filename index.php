@@ -10,7 +10,7 @@ $output = prepareOutput($query);
 
 ?>
 
-    <h2>NEW BOOK?</h2>
+<h2>NEW BOOK?</h2>
 
 <h2>BOOK COLLECTION</h2>
 

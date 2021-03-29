@@ -4,7 +4,7 @@ require '../functions.php';
 
 use PHPUnit\Framework\TestCase;
 
-class functions extends TestCase
+class Functions extends TestCase
 {
     public function testPrepareOutput_success1()
     {
