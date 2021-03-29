@@ -17,6 +17,6 @@ $output = prepareOutput($query);
 <?php
 
 // foreach statement outputs all db entries to HTML in formatted state
-foreach ($output as $key => $value) {
+foreach ($output as $value) {
     echo $value;
 }
