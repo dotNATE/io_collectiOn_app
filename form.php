@@ -2,11 +2,14 @@
 
 require 'functions.php';
 
-$db = new PDO("mysql:host=db; dbname=collection_app", "root", "password");
-$db ->setAttribute(PDO::ATTR_DEFAULT_FETCH_MODE, PDO::FETCH_ASSOC);
+$db = connectToDB();
 
-if( (!empty($_POST['title'])) && (!empty($_POST['author'])) && (!empty($_POST['released'])) && (!empty($_POST['genre'])) && (!empty($_POST['page_count'])) ) {
-    insertToDB($db, $_POST['title'], $_POST['author'], $_POST['genre'], $_POST['page_count'], $_POST['released']);
+if (count($_POST) === 5) {
+    $result = [];
+    foreach ($_POST as $value) {
+        $result[] = trim(htmlspecialchars($value));
+    }
+    insertToDB($db, $result[0], $result[1], $result[2], $result[3], $result[4]);
     header('Location: index.php');
 } else {
     header('Location: index.php?error=Error - All fields are required!');

@@ -8,11 +8,9 @@
 
     <?php
 
-    $db = new PDO("mysql:host=db; dbname=collection_app", "root", "password");
-    $db ->setAttribute(PDO::ATTR_DEFAULT_FETCH_MODE, PDO::FETCH_ASSOC);
-
     require 'functions.php';
 
+    $db = connectToDB();
     $query = getAllFromDB($db);
     $output = prepareOutput($query);
 
@@ -43,6 +41,7 @@
     foreach ($output as $value) {
         echo $value;
     }
+
     ?>
 
     </body>
