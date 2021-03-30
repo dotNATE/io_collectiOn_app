@@ -1,10 +1,20 @@
 <?php
 
 /**
+ * @return object - database connection object/pdo
+ */
+function connectToDB(): object
+{
+    $db = new PDO("mysql:host=db; dbname=collection_app", "root", "password");
+    $db ->setAttribute(PDO::ATTR_DEFAULT_FETCH_MODE, PDO::FETCH_ASSOC);
+    return $db;
+}
+
+/**
  * @param object $db - a database object returned from the PDO at the top of index
  *
- * @returns - an assoc array containing all of the data from the database
- **/
+ * @returns array - an assoc array containing all of the data from the database
+ */
 function getAllFromDB(object $db): array
 {
     $query = $db->prepare('SELECT * FROM `books`;');
@@ -22,10 +32,10 @@ function getAllFromDB(object $db): array
  *
  * @returns void
  */
-function insertToDB(object $db, string $title, string $author, string $genre, string $pg_count, string $release_year): void
+function insertToDB(object $db, string $title, string $author, string $release_year, string $genre, string $pg_count): void
 {
-    $query = $db->prepare('INSERT INTO `books` (`book_title`, `author`, `genre`, `page_count`, `year_released`) VALUES (:title, :author, :genre, :pg_count, :release_year);');
-    $query->execute(['title' => $title, 'author' => $author, 'genre' => $genre, 'pg_count' => $pg_count, 'release_year' => $release_year]);
+    $query = $db->prepare('INSERT INTO `books` (`book_title`, `author`, `year_released`, `genre`, `page_count`) VALUES (:title, :author, :release_year, :genre, :pg_count);');
+    $query->execute(['title' => $title, 'author' => $author, 'release_year' => $release_year, 'genre' => $genre, 'pg_count' => $pg_count]);
 }
 
 /**
