@@ -1,31 +1,43 @@
-<?php
+<!DOCTYPE html>
+<html>
+    <head lang="en-GB">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Collect-iO-n Application</title>
+    </head>
+    <body>
 
-$db = new PDO("mysql:host=db; dbname=collection_app", "root", "password");
-$db ->setAttribute(PDO::ATTR_DEFAULT_FETCH_MODE, PDO::FETCH_ASSOC);
+    <?php
 
-require 'functions.php';
+    $db = new PDO("mysql:host=db; dbname=collection_app", "root", "password");
+    $db ->setAttribute(PDO::ATTR_DEFAULT_FETCH_MODE, PDO::FETCH_ASSOC);
 
-$query = getAllFromDB($db);
-$output = prepareOutput($query);
+    require 'functions.php';
 
-?>
+    $query = getAllFromDB($db);
+    $output = prepareOutput($query);
 
-<h2>NEW BOOK?</h2>
+    ?>
 
-<form>
-    <input type="text" name="title" placeholder="Title" /><br>
-    <input type="text" name="author" placeholder="Author" /><br>
-    <input type="text" name="released" placeholder="Released" /><br>
-    <input type="text" name="genre" placeholder="Genre" /><br>
-    <input type="text" name="page_count" placeholder="Page Count" /><br>
-    <input type="submit" value="Add to Collection"/>
-</form>
+    <h2>NEW BOOK?</h2>
 
-<h2>BOOK COLLECTION</h2>
+    <form>
+        <label>Title: <input type="text" name="title" placeholder="enter text here" /></label><br>
+        <label>Author: <input type="text" name="author" placeholder="enter text here" /></label><br>
+        <label>Year Released: <input type="text" name="released" placeholder="enter number here" /></label><br>
+        <label>Genre: <input type="text" name="genre" placeholder="enter text here" /></label><br>
+        <label>Page Count: <input type="text" name="page_count" placeholder="enter number here" /></label><br>
+        <input type="submit" value="Add to Collection"/>
+    </form>
 
-<?php
+    <h2>BOOK COLLECTION</h2>
 
-// foreach statement outputs all db entries to HTML in formatted state
-foreach ($output as $value) {
-    echo $value;
-}
+    <?php
+
+    // foreach statement outputs all db entries to HTML in formatted state
+    foreach ($output as $value) {
+        echo $value;
+    }
+    ?>
+
+    </body>
+</html>
