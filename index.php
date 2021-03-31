@@ -2,7 +2,8 @@
 <html>
     <head lang="en-GB">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <link rel="stylesheet" href="style.css">
+        <link rel="stylesheet" href="styles/normalize.css">
+        <link rel="stylesheet" href="styles/style.css">
         <title>Collect-iO-n Application</title>
     </head>
     <body>
