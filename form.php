@@ -4,7 +4,12 @@ require 'functions.php';
 
 $db = connectToDB();
 
-if (count($_POST) === 5) {
+if (!empty($_POST['delete_title'])) {
+    updateDB($db, $_POST['delete_title']);
+    header('Location: index.php');
+}
+
+if (!empty($_POST['title'] && $_POST['author'] && $_POST['genre'] && $_POST['released'] && $_POST['page_count'])) {
     $result = [];
     foreach ($_POST as $value) {
         $result[] = trim(htmlspecialchars($value));
