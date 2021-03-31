@@ -30,9 +30,4 @@ if (!empty($_POST['update_page_count'])) {
     updateDBItem($db, $result);
 }
 
-//echo '<pre>';
-//print_r($_POST);
-//var_dump($_POST);
-//echo '</pre>';
-
 header('Location: index.php');
