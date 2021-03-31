@@ -23,6 +23,18 @@
             if (!empty($_GET['error'])) {
                 echo '<p class="error">' . $_GET['error'] . '</p>';
             }
+
+
+
+            $test = createUpdateQuery('title', 'test', 69);
+
+            echo '<pre>';
+            print_r($test);
+            echo '</pre>';
+
+
+
+
             ?>
 
             <form method="post" action="form.php">

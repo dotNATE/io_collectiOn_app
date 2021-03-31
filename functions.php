@@ -46,9 +46,22 @@ function insertToDB(object $db, string $title, string $author, string $release_y
  */
 function softDelete(object $db, string $id): void
 {
-    $query = $db->prepare("UPDATE `books` SET `deleted` = '1' WHERE `id` = :id;");
+    $query = $db->prepare('UPDATE `books` SET `deleted` = \'1\' WHERE `id` = :id;');
     $query->execute(['id' => $id]);
 }
+
+function createUpdateQuery(string $column, string $value, $id):array
+{
+    $result[] = 'UPDATE `books` SET `' . $column . '` = \'' . $value . '\' WHERE `id` = :id;';
+    $result[] = $id;
+    return $result;
+}
+
+//function updateDBItem(object $db, array $query): void
+//{
+//    $query = $db->prepare($query[0]);
+//    $query->execute(['id' => $query[1]);
+//}
 
 /**
  * @param array $query - generated from getAllFromDB()
