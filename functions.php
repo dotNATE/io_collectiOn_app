@@ -46,8 +46,34 @@ function insertToDB(object $db, string $title, string $author, string $release_y
  */
 function softDelete(object $db, string $id): void
 {
-    $query = $db->prepare("UPDATE `books` SET `deleted` = '1' WHERE `id` = :id;");
+    $query = $db->prepare('UPDATE `books` SET `deleted` = \'1\' WHERE `id` = :id;');
     $query->execute(['id' => $id]);
+}
+
+/**
+ * @param string $column - desired column in database table, decided by form on index.php
+ * @param string $value - desired new value for the above specified column
+ * @param $id - the database id of the record to be amended
+ *
+ * @return array - contains [0]-> an UPDATE SQL query, [1]-> $value, [2]-> $id
+ */
+function createUpdateQuery(string $column, string $value, string $id):array
+{
+    $column = trim(htmlspecialchars($column));
+    $result[] = 'UPDATE `books` SET `' . $column . '` = :val WHERE `id` = :id;';
+    $result[] = trim(htmlspecialchars($value));
+    $result[] = trim(htmlspecialchars($id));
+    return $result;
+}
+
+/**
+ * @param object $db - a database object returned from the PDO at the top of index
+ * @param array $sqlArray - an array returned from createUpdateQuery()
+ */
+function updateDBItem(object $db, array $sqlArray): void
+{
+    $query = $db->prepare("$sqlArray[0]");
+    $query->execute(['val' => $sqlArray[1], 'id' => $sqlArray[2]]);
 }
 
 /**
