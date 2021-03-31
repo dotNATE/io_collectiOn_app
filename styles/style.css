@@ -31,6 +31,7 @@ body {
 }
 
 .new_book_section,
+.update_section,
 .delete_section,
 .gallery_section {
     padding: 1rem;
