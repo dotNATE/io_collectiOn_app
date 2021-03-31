@@ -60,9 +60,9 @@ function softDelete(object $db, string $id): void
 function createUpdateQuery(string $column, string $value, string $id):array
 {
     $column = trim(htmlspecialchars($column));
-    $result[] = 'UPDATE `books` SET `' . $column . '` = :val WHERE `id` = :id;';
-    $result[] = trim(htmlspecialchars($value));
-    $result[] = trim(htmlspecialchars($id));
+    $result['sql'] = 'UPDATE `books` SET `' . $column . '` = :val WHERE `id` = :id;';
+    $result['value'] = trim(htmlspecialchars($value));
+    $result['id'] = trim(htmlspecialchars($id));
     return $result;
 }
 
@@ -72,8 +72,8 @@ function createUpdateQuery(string $column, string $value, string $id):array
  */
 function updateDBItem(object $db, array $sqlArray): void
 {
-    $query = $db->prepare("$sqlArray[0]");
-    $query->execute(['val' => $sqlArray[1], 'id' => $sqlArray[2]]);
+    $query = $db->prepare($sqlArray['sql']);
+    $query->execute(['val' => $sqlArray['value'], 'id' => $sqlArray['id']]);
 }
 
 /**
