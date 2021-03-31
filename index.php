@@ -36,7 +36,7 @@
         <section class="delete_section">
             <h2>MADE A MISTAKE?</h2>
             <form method="post" action="form.php">
-                <div class="form_input_container"><label>ID of Title to be Removed: </label><input type="number" name="delete_title" placeholder="proceed with caution!"/></div>
+                <div class="form_input_container"><label>ID of Title to be Removed: </label><input type="number" name="delete_id" placeholder="proceed with caution!"/></div>
                 <input type="submit" value="Remove from Collection!"/>
             </form>
         </section>
@@ -49,7 +49,6 @@
                 foreach ($output as $value) {
                     echo $value;
                 }
-
                 ?>
             </div>
         </section>

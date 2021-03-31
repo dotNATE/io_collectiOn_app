@@ -17,7 +17,7 @@ function connectToDB(): object
  */
 function getAllFromDB(object $db): array
 {
-    $query = $db->prepare('SELECT * FROM `books`;');
+    $query = $db->prepare('SELECT * FROM `books` WHERE NOT `deleted` = \'1\';');
     $query->execute();
     return $query->fetchAll();
 }
@@ -44,10 +44,10 @@ function insertToDB(object $db, string $title, string $author, string $release_y
  *
  * @returns void
  */
-function softDelete(object $db, string $title): void
+function softDelete(object $db, string $id): void
 {
-    $query = $db->prepare("UPDATE `books` SET `deleted` = '1' WHERE `id` = :title;");
-    $query->execute(['title' => $title]);
+    $query = $db->prepare("UPDATE `books` SET `deleted` = '1' WHERE `id` = :id;");
+    $query->execute(['id' => $id]);
 }
 
 /**
@@ -59,9 +59,6 @@ function prepareOutput(array $query): array
 {
     $result = [];
     foreach ($query as $el) {
-        if ($el['deleted']) {
-            continue;
-        }
         $result[] = '<span class="gallery_item"><h2>' . $el['book_title'] . '</h2>' . '<p><em>' . $el['author'] . '</em></p><br>' . 'Released in ' . $el['year_released'] . '. ' . $el['genre']. '. ' . $el['page_count'] . ' pages.' . ' <em>ID: ' . $el['id'] . '</em></span>';
     }
     return $result;
