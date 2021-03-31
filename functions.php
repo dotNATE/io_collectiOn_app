@@ -57,7 +57,7 @@ function softDelete(object $db, string $id): void
  *
  * @return array - contains [0]-> an UPDATE SQL query, [1]-> $value, [2]-> $id
  */
-function createUpdateQuery(string $column, string $value, $id):array
+function createUpdateQuery(string $column, string $value, string $id):array
 {
     $column = trim(htmlspecialchars($column));
     $result[] = 'UPDATE `books` SET `' . $column . '` = :val WHERE `id` = :id;';
