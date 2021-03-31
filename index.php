@@ -23,18 +23,6 @@
             if (!empty($_GET['error'])) {
                 echo '<p class="error">' . $_GET['error'] . '</p>';
             }
-
-
-
-            $test = createUpdateQuery('title', 'test', 69);
-
-            echo '<pre>';
-            print_r($test);
-            echo '</pre>';
-
-
-
-
             ?>
 
             <form method="post" action="form.php">
@@ -49,7 +37,7 @@
 
         <section class="update_section">
             <h2>MADE A LITTLE MISTAKE?</h2>
-            <form method="post" action="form.php">
+            <form method="post" action="update_database.php">
                 <div class="form_input_container"><label>ID of Entry to be Updated: </label><input type="number" name="update_id" placeholder="proceed with caution!"/></div>
                 <div class="form_input_container"><label>Title: </label><input type="text" name="update_title" placeholder="required" /></div>
                 <div class="form_input_container"><label>Author: </label><input type="text" name="update_author" placeholder="required" /></div>

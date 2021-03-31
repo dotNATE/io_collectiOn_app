@@ -52,16 +52,17 @@ function softDelete(object $db, string $id): void
 
 function createUpdateQuery(string $column, string $value, $id):array
 {
-    $result[] = 'UPDATE `books` SET `' . $column . '` = \'' . $value . '\' WHERE `id` = :id;';
+    $result[] = 'UPDATE `books` SET `' . $column . '` = :val WHERE `id` = :id;';
+    $result[] = $value;
     $result[] = $id;
     return $result;
 }
 
-//function updateDBItem(object $db, array $query): void
-//{
-//    $query = $db->prepare($query[0]);
-//    $query->execute(['id' => $query[1]);
-//}
+function updateDBItem(object $db, array $sqlArray): void
+{
+    $query = $db->prepare("$sqlArray[0]");
+    $query->execute(['val' => $sqlArray[1], 'id' => $sqlArray[2]]);
+}
 
 /**
  * @param array $query - generated from getAllFromDB()
