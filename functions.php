@@ -62,7 +62,7 @@ function prepareOutput(array $query): array
         if ($el['deleted']) {
             continue;
         }
-        $result[] = '<pre><span class="class"><h2>' . $el['book_title'] . '</h2>' . '<p><em>' . $el['author'] . '</em></p><br>' . 'Released in ' . $el['year_released'] . '. ' . $el['genre']. '. ' . $el['page_count'] . ' pages.</span></pre>';
+        $result[] = '<span class="gallery_item"><h2>' . $el['book_title'] . '</h2>' . '<p><em>' . $el['author'] . '</em></p><br>' . 'Released in ' . $el['year_released'] . '. ' . $el['genre']. '. ' . $el['page_count'] . ' pages.</span>';
     }
     return $result;
 }

@@ -1,16 +1,51 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,400;0,700;1,400&display=swap');
+
 * {
     padding: 0;
     margin: 0;
+    font-family: 'Roboto', sans-serif;
+    font-size: 10px;
 }
 
 body {
     padding: 1rem;
 }
 
-form label {
-    display: block;
+.form_input_container {
+    display: flex;
+    justify-content: space-between;
+    margin: .25rem 0;
+    width: 40%;
+}
+
+.form_input_container label {
+    width: 33%
+}
+
+.form_input_container input {
+    min-width: 15rem;
 }
 
 .error {
     color: red;
+}
+
+.new_book_section,
+.delete_section,
+.gallery_section {
+    padding: 1rem;
+    border-bottom: 1px solid black;
+}
+
+.gallery_actual {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+}
+
+.gallery_item {
+    background-color: #ececec;
+    width: 90%;
+    padding: 1rem;
+    margin: 1rem;
+    border: 1px solid black;
 }
