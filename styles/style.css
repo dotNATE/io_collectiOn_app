@@ -15,11 +15,11 @@ body {
     display: flex;
     justify-content: space-between;
     margin: .25rem 0;
-    width: 40%;
+    width: 35%;
 }
 
 .form_input_container label {
-    width: 33%
+    width: 50%
 }
 
 .form_input_container input {
@@ -35,6 +35,10 @@ body {
 .gallery_section {
     padding: 1rem;
     border-bottom: 1px solid black;
+}
+
+.new_book_section {
+    border-top: 1px solid black;
 }
 
 .gallery_actual {

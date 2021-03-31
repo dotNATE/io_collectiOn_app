@@ -5,7 +5,8 @@ require 'functions.php';
 $db = connectToDB();
 
 if (!empty($_POST['delete_title'])) {
-    updateDB($db, $_POST['delete_title']);
+    $database_string = trim(htmlspecialchars($_POST['delete_title']));
+    softDelete($db, $database_string);
     header('Location: index.php');
 }
 
